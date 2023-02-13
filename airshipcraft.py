@@ -1,7 +1,10 @@
+import command_latency
+import command_ticket
 import discord
 from discord import app_commands
 from dotenv import load_dotenv
 import os
+import message_handler
 
 load_dotenv()
 
@@ -25,13 +28,14 @@ tree = app_commands.CommandTree(client)
 
 @client.event
 async def on_message(message):
-    username = str(message.author).split('#')[0]
-    channel = str(message.channel.name)
-    user_message = str(message.content)
-    print(f'Message {user_message} by {username} on {channel}')
+    await message_handler.log_message(message)
 
-@tree.command(guild = discord.Object(id=os.getenv('GUILD_ID')), name = 'latency', description='Check the Bot Latency to Discord')
+@tree.command(guild = discord.Object(id=os.getenv('GUILD_ID')), name = 'latency', description='Check the Bots Latency to Discord')
 async def latency(interaction: discord.Interaction):
-    await interaction.response.send_message(f'Server Ping: {round(client.latency * 1000)}ms')
+    await command_latency.latency(interaction, client)
+
+@tree.command(guild = discord.Object(id=os.getenv('GUILD_ID')), name = 'ticket', description='Create a Ticket')
+async def ticket(interaction: discord.Interaction, name: str):
+    await command_ticket.ticket(interaction, name, client)
 
 client.run(os.getenv('TOKEN'))
