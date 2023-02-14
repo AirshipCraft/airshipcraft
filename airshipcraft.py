@@ -17,6 +17,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    await eh.log_message(message)
+    await eh.log_message(message, client)
 
 client.run(env['TOKEN'])
