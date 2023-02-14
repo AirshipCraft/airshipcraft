@@ -1,9 +1,8 @@
 import client as cl
 import commands as co
-import discord
 from discord import app_commands
 from dotenv import load_dotenv
-import message_handler as mh
+import event_handler as eh
 import os
 
 load_dotenv()
@@ -14,12 +13,10 @@ co.register_commands(env, client, tree)
 
 @client.event
 async def on_ready():
-    await client.wait_until_ready()
-    await tree.sync(guild = discord.Object(id=os.getenv('GUILD_ID')))
-    print(f'{client.user} is now ready for action!')
+    await eh.on_ready(env, client, tree)
 
 @client.event
 async def on_message(message):
-    await mh.log_message(message)
+    await eh.log_message(message)
 
 client.run(env['TOKEN'])
