@@ -6,11 +6,8 @@ from dotenv import load_dotenv
 import message_handler as mh
 import os
 
-def load_env():
-    load_dotenv()
-    return os.environ
-
-env = load_env()
+load_dotenv()
+env = os.environ
 client = cl.create_client()
 tree = app_commands.CommandTree(client)
 co.register_commands(env, client, tree)
