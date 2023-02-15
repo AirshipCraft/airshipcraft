@@ -14,4 +14,10 @@ async def mute(interaction, member, reason):
             await channel.set_permissions(muted_role, send_messages=False)
     
     await member.add_roles(muted_role)
-    await interaction.response.send_message(f"{member.mention} has been muted\n\n**Reason ->** {reason}")
+
+    e = discord.Embed()
+    e.title = 'UH-OH'
+    e.add_field(name='Player Muted', value=f'{member.mention}')
+    e.add_field(name='Reason', value=f'{reason}')
+    e.color = discord.Color.red()
+    await interaction.response.send_message(embed=e)

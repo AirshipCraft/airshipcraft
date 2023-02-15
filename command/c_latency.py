@@ -1,2 +1,9 @@
+import discord
+
 async def latency(interaction, client):
-    await interaction.response.send_message(f'**Server Ping:** {round(client.latency * 1000)}ms')
+    e = discord.Embed()
+    e.title = 'Bot to Discord Latency'
+    e.description = f'Latency between the Bot and Discord'
+    e.add_field(name='Current Latency', value=f'{round(client.latency * 1000)}ms')
+    e.color = discord.Color.green()
+    await interaction.response.send_message(embed=e)

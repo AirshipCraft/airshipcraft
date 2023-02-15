@@ -16,4 +16,10 @@ async def unmute(interaction, member, reason):
         return
     
     await member.remove_roles(muted_role)
-    await interaction.response.send_message(f"{member.mention} has been un-muted\n\n**Reason ->** {reason}")
+
+    e = discord.Embed()
+    e.title = 'YEAH'
+    e.add_field(name='Player Unmuted', value=f'{member.mention}')
+    e.add_field(name='Reason', value=f'{reason}')
+    e.color = discord.Color.green()
+    await interaction.response.send_message(embed=e)
