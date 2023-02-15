@@ -14,4 +14,4 @@ async def mute(interaction, member, reason):
             await channel.set_permissions(muted_role, send_messages=False)
     
     await member.add_roles(muted_role)
-    await interaction.response.send_message(f"{member.mention} has been muted\n\nReason -> {reason}")
+    await interaction.response.send_message(f"{member.mention} has been muted\n\n**Reason ->** {reason}")

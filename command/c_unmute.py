@@ -16,4 +16,4 @@ async def unmute(interaction, member, reason):
         return
     
     await member.remove_roles(muted_role)
-    await interaction.response.send_message(f"{member.mention} has been un-muted\n\nReason -> {reason}")
+    await interaction.response.send_message(f"{member.mention} has been un-muted\n\n**Reason ->** {reason}")

@@ -4,4 +4,4 @@ async def ban(interaction, member, reason):
         return
 
     await interaction.guild.ban(member, reason=reason)  
-    await interaction.response.send_message(f"{member.mention} has been banned\n\nReason -> {reason}")
+    await interaction.response.send_message(f"{member.mention} has been banned\n\n**Reason ->** {reason}")

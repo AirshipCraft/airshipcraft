@@ -4,4 +4,4 @@ async def kick(interaction, member, reason):
         return
 
     await member.kick()
-    await interaction.response.send_message(f"{member.mention} has been kicked\n\nReason -> {reason}")
+    await interaction.response.send_message(f"{member.mention} has been kicked\n\n**Reason ->** {reason}")

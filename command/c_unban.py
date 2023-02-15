@@ -4,4 +4,4 @@ async def unban(interaction, member, reason):
         return
 
     await interaction.guild.unban(member)  
-    await interaction.response.send_message(f"{member.mention} has been un-banned\n\nReason -> {reason}")
+    await interaction.response.send_message(f"{member.mention} has been un-banned\n\n**Reason ->** {reason}")
