@@ -15,7 +15,7 @@ def register_commands(env, client, tree):
         await c_ban.ban(interaction, member, reason)
 
     @tree.command(guild=discord.Object(id=env['GUILD_ID']), name='unban', description='Unban a User')
-    async def unban(interaction: discord.Interaction, member: discord.Member, reason: str):
+    async def unban(interaction: discord.Interaction, member: str, reason: str):
         await c_unban.unban(interaction, member, reason)
 
     @tree.command(guild=discord.Object(id=env['GUILD_ID']), name='kick', description='Kick a User')
