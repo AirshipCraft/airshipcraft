@@ -1,7 +1,7 @@
 import discord
 
 async def unmute(interaction, member, reason):
-    if not member.guild_permissions.mute_members:
+    if not interaction.user.guild_permissions.mute_members:
         await interaction.response.send_message("You do not have permission to use this command")
         return
 

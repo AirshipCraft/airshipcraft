@@ -1,6 +1,6 @@
 import discord
 async def ban(interaction, member, reason):
-    if not member.guild_permissions.ban_members:
+    if not interaction.user.guild_permissions.ban_members:
         await interaction.response.send_message("You do not have permission to use this command")
         return
 
